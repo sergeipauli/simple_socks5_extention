@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<title>popup</title>
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+		<link href="style.css" rel="stylesheet">
+	</head>
+	
+	<body>
+		<div>
+			<div class="switch_container">
+				<span>Address:Port</span>
+				<label class="switch">
+					<input type="checkbox" id="enable_switch">
+					<span class="slider"></span>
+				</label>
+			</div>
+			
+			<input type="text" placeholder="127.0.0.1:9150 or [::1]:9150">
+
+			<hr>
+
+			<div class="switch_container">
+				<span>List</span>
+				<label class="switch">
+					<input type="checkbox" id="list_switch">
+					<span class="slider"></span>
+				</label>
+			</div>
+			
+			<textarea placeholder="foobar.com"></textarea>
+
+			<div class="radio_container">
+				<label>
+					<input type="radio" name="mode" value="allow" checked>
+					<span class="radio_circle"></span>
+					<span>Allow</span>
+				</label>
+				
+				<label>
+					<input type="radio" name="mode" value="bypass">
+					<span class="radio_circle"></span>
+					<span>Bypass</span>
+				</label>
+			</div>
+		</div>
+
+		<div class="about">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 128 128" fill="none">
+				<circle cx="64" cy="64" r="58" stroke="var(--text-color)" stroke-width="6"/>
+				<circle cx="64" cy="30" r="4" fill="var(--text-color)"/>
+				<rect x="61" y="40" width="6" height="64" rx="5" fill="var(--text-color)"/>
+			</svg>
+		</div>
+
+		<div id="about_overlay">
+			<div class="content">
+				<p><a href="https://github.com/sergeipauli/simple_socks5_extention" target="_blank">GitHub</a></p>
+				<p>Sergei Pauli 2025</p>
+			</div>
+		</div>
+
+		<script src="popup.js"></script>
+		<script src="storage.js"></script>
+	</body>
+</html>

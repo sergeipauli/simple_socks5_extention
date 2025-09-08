@@ -1,0 +1,14 @@
+{
+	"manifest_version": 3,
+	"name": "Simple Popup Extension",
+	"version": "1.0",
+	"description": "320x380",
+	"action": {
+		"default_popup": "popup.html"
+	},
+	"permissions": ["proxy", "storage"],
+	"host_permissions": ["<all_urls>"],
+	"background": {
+		"service_worker": "background.js"
+	}
+}
