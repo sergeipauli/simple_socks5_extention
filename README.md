@@ -1,5 +1,9 @@
 # Simple SOCKS5 Extention
 
+<h1 align="center">
+  <img src="https://interface.sergeipauli.ru/simple_socks_5_banner_gh.jpg" style="max-width:100%; height:auto;">
+</h1>
+
 A simple Chrome extension to enable **SOCKS5 proxy** in your browser with support for domain lists and dynamic content detection.
 
 ## Version 1.0
