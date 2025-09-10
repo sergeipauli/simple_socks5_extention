@@ -40,7 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		let mode = 'allow';
 		
 		radioInputs.forEach(input => {
-			if (input.checked) mode = input.value;
+			if (input.checked) {
+				mode = input.value;
+			}
 		});
 
 		chrome.storage.sync.set({
