@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
 	const aboutBtn = document.querySelector('.about');
 	const overlay = document.getElementById('about_overlay');
 	const content = overlay.querySelector('.content');
@@ -7,7 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	const addressInput = document.querySelector('input[type="text"]');
 	const radioInputs = document.querySelectorAll('.radio_container input');
 	const radioCircles = document.querySelectorAll('.radio_circle');
-
+	
+	function loadSettings() {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve();
+            }, 200);
+        });
+    }
+	
 	aboutBtn.addEventListener('click', () => {
 		overlay.classList.toggle('active');
 	});
@@ -21,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	content.addEventListener('click', () => {
 		document.documentElement.classList.toggle('dark');
 		updateRadioHighlight();
+		updateIconForTheme();
 	});
 
 	window.updateRadioHighlight = function() {
@@ -61,7 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	updateRadioHighlight();
 	
-	document.body.style.display = 'flex';
+	await loadSettings();
+	
+	document.body.style.visibility = 'visible';
+    document.body.style.opacity = '1';
 });
 
 function validateProxyAddress(address) {
@@ -82,12 +94,6 @@ function flashInputRed(input) {
     }, 500);
 }
 
-document.getElementById("enable_switch").addEventListener("change", applySettings);
-document.getElementById("list_switch").addEventListener("change", applySettings);
-document.querySelectorAll("input, textarea").forEach(el => {
-  el.addEventListener("input", applySettings);
-});
-
 function applySettings() {
 	const host = document.querySelector("input[type=text]").value;
 	const list = document.querySelector("textarea").value;
@@ -96,9 +102,44 @@ function applySettings() {
 	const listEnabled = document.getElementById("list_switch").checked;
 
 	chrome.runtime.sendMessage({
-	type: "setProxy",
-	host, list, mode, enabled, listEnabled
+		type: "setProxy",
+		host, 
+		list, 
+		mode, 
+		enabled, 
+		listEnabled
 	}, (response) => {
 		console.log("Proxy response:", response);
 	});
 }
+
+document.getElementById("enable_switch").addEventListener("change", applySettings);
+document.getElementById("list_switch").addEventListener("change", applySettings);
+document.querySelectorAll("input, textarea").forEach(el => {el.addEventListener("input", applySettings);});
+
+function updateIconForTheme() {
+    const isDark = document.documentElement.classList.contains('dark');
+
+    chrome.action.setIcon({
+        path: isDark ? {
+            "48": "logo/logo48_dark.png",
+            "128": "logo/logo128_dark.png"
+        } : {
+            "48": "logo/logo48.png",
+            "128": "logo/logo128.png"
+        }
+    });
+}
+
+function disableProxyOnChange() {
+    const enableSwitch = document.getElementById("enable_switch");
+	
+    if (enableSwitch.checked) {
+        enableSwitch.checked = false;
+        applySettings();
+    }
+}
+
+document.querySelector('input[type="text"]').addEventListener("input", disableProxyOnChange);
+document.querySelector("textarea").addEventListener("input", disableProxyOnChange);
+document.querySelectorAll('input[name="mode"]').forEach(radio => {radio.addEventListener("change", disableProxyOnChange);});

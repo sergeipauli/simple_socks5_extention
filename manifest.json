@@ -1,14 +1,36 @@
 {
 	"manifest_version": 3,
-	"name": "Simple Popup Extension",
+	"name": "Simple Socks5 Extension",
 	"version": "1.0",
-	"description": "320x380",
-	"action": {
-		"default_popup": "popup.html"
+	"description": "An extension that helps you connect a SOCKS5 proxy to your browser with support for allow and bypass domain lists.",
+	"author": "Sergei Pauli",
+	"icons": {
+		"48": "logo/logo48.png",
+		"128": "logo/logo128.png"
 	},
-	"permissions": ["proxy", "storage"],
+	"action": {
+		"default_popup": "popup.html",
+		"default_icon": {
+			"48": "logo/logo48.png",
+			"128": "logo/logo128.png"
+		}
+	},
+	"permissions": [
+		"proxy",
+		"storage",
+		"webRequest"
+	],
 	"host_permissions": ["<all_urls>"],
 	"background": {
 		"service_worker": "background.js"
-	}
+	},
+	"content_security_policy": {
+		"extension_pages": "script-src 'self'; object-src 'self';"
+	},
+	"minimum_chrome_version": "92",
+	"web_accessible_resources": [ {
+		  "resources": ["logo/*.png"],
+		  "matches": ["<all_urls>"]
+		}
+	]
 }

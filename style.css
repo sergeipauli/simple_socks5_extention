@@ -31,7 +31,8 @@
 }
 
 body {
-	display: none;
+	display: flex;
+	visibility: hidden;
 	flex-direction: column;
 	justify-content: space-between;
 
@@ -46,6 +47,9 @@ body {
 	font-family: "Lexend Deca", sans-serif;
 	background: var(--bg-color);
 	color: var(--text-color);
+	
+	transition: opacity 0.2s ease-in-out;
+	opacity: 0;
 }
 
 .switch_container {
