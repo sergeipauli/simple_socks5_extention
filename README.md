@@ -30,7 +30,7 @@ Invalid proxy addresses are rejected with a visual warning.
 
 ### 1.0.0.1
 
-## Canggelog
+## Changelog
 - Fixed memory leak when dynamically adding domains.  
 - Improved handling of nested dynamic requests (initiator check).  
 - Added domain normalization and validation (removal of protocol, invalid chars).  
