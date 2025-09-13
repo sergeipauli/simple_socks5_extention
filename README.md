@@ -28,9 +28,10 @@ Real-time validation of proxy address input.
 Only Chrome v88+ is supported (Manifest V3).
 Invalid proxy addresses are rejected with a visual warning.
 
+## Changelog
+
 ### 1.0.0.1
 
-## Changelog
 - Fixed memory leak when dynamically adding domains.  
 - Improved handling of nested dynamic requests (initiator check).  
 - Added domain normalization and validation (removal of protocol, invalid chars).  
