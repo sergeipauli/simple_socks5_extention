@@ -1,9 +1,10 @@
 {
 	"manifest_version": 3,
-	"name": "Simple Socks5 Extension",
-	"version": "1.0",
+	"name": "Simple Socks5",
+	"version": "1.0.0.1",
 	"description": "An extension that helps you connect a SOCKS5 proxy to your browser with support for allow and bypass domain lists.",
 	"author": "Sergei Pauli",
+	"homepage_url": "https://sergeipauli.ru/",
 	"icons": {
 		"48": "logo/logo48.png",
 		"128": "logo/logo128.png"

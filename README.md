@@ -6,7 +6,7 @@
 
 Simple Chrome extension to enable **SOCKS5 proxy** in your browser with support for domain lists and dynamic content detection.
 
-**Version 1.0**
+**Version 1.0.0.1**
 
 ## Features
 
@@ -27,6 +27,17 @@ Real-time validation of proxy address input.
 
 Only Chrome v88+ is supported (Manifest V3).
 Invalid proxy addresses are rejected with a visual warning.
+
+### 1.0.0.1
+
+## Canggelog
+- Fixed memory leak when dynamically adding domains.  
+- Improved handling of nested dynamic requests (initiator check).  
+- Added domain normalization and validation (removal of protocol, invalid chars).  
+- Limited dynamic domains stored in PAC script to 300 entries.  
+
+### 1.0
+- Initial release.
 
 ## License
 
